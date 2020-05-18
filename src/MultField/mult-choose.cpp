@@ -1,8 +1,16 @@
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#endif
+
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include "../jsoncpp/json.h"
+#include <cmath>
+#include <json/json.h>
 
 using namespace std;
 
@@ -178,7 +186,8 @@ int main() {
         }
     }
     sort(q.begin(), q.end());
-    maxLayer = 0;
+    maxLayer = 1;
+    for (int i = 0; i < C_num; i++) layer[i] = 0;
     for (int i = 0; i < (int)q.size(); i++) {
         layer[q[i].second] = 1;
         for (int j = 0; j < i; j++) if (layer[q[i].second] < layer[q[j].second] + 1) {
@@ -213,7 +222,8 @@ int main() {
         }
     }
     sort(q.begin(), q.end());
-    maxLayer = 0;
+    maxLayer = 1;
+    for (int i = 0; i < C_num; i++) layer[i] = 0;
     for (int i = 0; i < (int)q.size(); i++) {
         layer[q[i].second] = 1;
         for (int j = 0; j < i; j++) if (layer[q[i].second] < layer[q[j].second] + 1) {

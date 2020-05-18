@@ -1,8 +1,16 @@
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#endif
+
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include "../jsoncpp/json.h"
+#include <cmath>
+#include <json/json.h>
 
 using namespace std;
 

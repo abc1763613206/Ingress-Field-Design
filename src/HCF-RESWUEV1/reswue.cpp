@@ -1,3 +1,10 @@
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#endif
+
 #include <cstdio>
 #include <algorithm>
 #include <cmath>
@@ -8,7 +15,7 @@
 #include <map>
 #include <vector>
 #include <iomanip>
-#include "../jsoncpp/json.h"
+#include <json/json.h>
 
 #define rep(i, l, r) for(int i=l; i<=r; i++)
 #define dow(i, l, r) for(int i=l; i>=r; i--)
@@ -46,7 +53,7 @@ inline void GetOpinion()
 	M0[++n]="A3", M1["A3"]=n, Lv[n]=1;
 	Add(1,2); Add(2,3); Add(1,3);
 
-	ifstream fin("LABEL");
+	ifstream fin("../LABEL");
 	int tmp, num=0; fin >> tmp; for(int i=1, a=1; i<tmp; i++) num+=a, a*=3;
 
 	string a, b, c, d;
